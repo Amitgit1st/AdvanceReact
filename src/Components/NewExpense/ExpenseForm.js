@@ -24,22 +24,28 @@ const ExpenseForm = () => {
     });
 
     const titleChanged = (event) => {
-        setUserInput({
-            ...userInput,
-            enteredtitle: event.target.value,
-        })
-    }
+        setUserInput((prevState) => {
+            return {
+                ...prevState,
+                enteredtitle: event.target.value
+            };
+        });
+    };
     const amountChanged = (event) => {
-        setUserInput({
-            ...userInput,
-            enteredAmount: event.target.value,
-        })
+        setUserInput((prevState) => {
+            return {
+                ...prevState,
+                enteredAmount: event.target.value
+            };
+        });
     }
     const dateChanged = (event) => {
-        setUserInput({
-            ...userInput,
-            enteredDate: event.target.value,
-        })
+        setUserInput((prevState) => {
+            return {
+                ...prevState,
+                enteredDate: event.target.value
+            };
+        });
     }
 
 
