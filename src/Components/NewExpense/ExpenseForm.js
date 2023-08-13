@@ -2,56 +2,38 @@ import React, { useState } from "react";
 import './ExpenseForm.css';
 
 const ExpenseForm = () => {
-    // const [enteredtitle ,setNewTitle]=useState('')
-    // const titleChanged = (event) => {
-    //     setNewTitle(event.target.value)
-    // }
-
-    // const [ enteredAmount,setNewAmount]=useState('')
-    // const amountChanged= (event) => {
-    //     setNewAmount(event.target.value)
-    // }
-
-    // const [enteredDate,setNewDate]=useState('')
-    // const dateChanged= (event) => {
-    //     setNewDate(event.target.value)
-    // }
-
-    const [userInput, setUserInput] = useState({
-        enteredtitle: '',
-        enteredAmount: '',
-        enteredDate: ''
-    });
-
+    const [enteredtitle ,setNewTitle]=useState('')
+    const [ enteredAmount,setNewAmount]=useState('')
+    const [enteredDate,setNewDate]=useState('')
+    
     const titleChanged = (event) => {
-        setUserInput((prevState) => {
-            return {
-                ...prevState,
-                enteredtitle: event.target.value
-            };
-        });
+        setNewTitle(event.target.value)
+    }
+
+   
+    const amountChanged= (event) => {
+        setNewAmount(event.target.value)
+    }
+
+   
+    const dateChanged= (event) => {
+        setNewDate(event.target.value)
+    }
+    const FormData=(event)=>{
+        event.preventDefault();
+        const ExpenseData={
+            title:enteredtitle,
+            amount:enteredAmount,
+            date:new Date(enteredDate)
+        };
+        console.log(ExpenseData);
     };
-    const amountChanged = (event) => {
-        setUserInput((prevState) => {
-            return {
-                ...prevState,
-                enteredAmount: event.target.value
-            };
-        });
-    }
-    const dateChanged = (event) => {
-        setUserInput((prevState) => {
-            return {
-                ...prevState,
-                enteredDate: event.target.value
-            };
-        });
-    }
+    
 
 
     return (
 
-        <form>
+        <form onSubmit={FormData}>
             <div className="new-expense__controls">
                 <div className="new-expense__controls">
                     <label>Expense title</label>
@@ -70,7 +52,7 @@ const ExpenseForm = () => {
 
             </div>
             <div className="new-expense__actions">
-                <button type="submit">Add Expense</button>
+                <button type="submit" >Add Expense</button>
             </div>
 
         </form>
