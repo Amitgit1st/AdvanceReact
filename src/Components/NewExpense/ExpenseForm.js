@@ -2,33 +2,36 @@ import React, { useState } from "react";
 import './ExpenseForm.css';
 
 const ExpenseForm = () => {
-    const [enteredtitle ,setNewTitle]=useState('')
-    const [ enteredAmount,setNewAmount]=useState('')
-    const [enteredDate,setNewDate]=useState('')
-    
+    const [enteredtitle, setNewTitle] = useState('')
+    const [enteredAmount, setNewAmount] = useState('')
+    const [enteredDate, setNewDate] = useState('')
+
     const titleChanged = (event) => {
         setNewTitle(event.target.value)
     }
 
-   
-    const amountChanged= (event) => {
+
+    const amountChanged = (event) => {
         setNewAmount(event.target.value)
     }
 
-   
-    const dateChanged= (event) => {
+
+    const dateChanged = (event) => {
         setNewDate(event.target.value)
     }
-    const FormData=(event)=>{
+    const FormData = (event) => {
         event.preventDefault();
-        const ExpenseData={
-            title:enteredtitle,
-            amount:enteredAmount,
-            date:new Date(enteredDate)
+        const ExpenseData = {
+            title: enteredtitle,
+            amount: enteredAmount,
+            date: new Date(enteredDate)
         };
         console.log(ExpenseData);
+        setNewTitle('');
+        setNewAmount('');
+        setNewDate('');
     };
-    
+
 
 
     return (
@@ -37,17 +40,17 @@ const ExpenseForm = () => {
             <div className="new-expense__controls">
                 <div className="new-expense__controls">
                     <label>Expense title</label>
-                    <input type="text" onChange={titleChanged} />
+                    <input type="text" value={enteredtitle} onChange={titleChanged} />
                 </div>
 
                 <div className="new-expense__controls">
                     <label>Expense Amount</label>
-                    <input type="number" onChange={amountChanged} />
+                    <input type="number" value={enteredAmount} onChange={amountChanged} />
                 </div>
 
                 <div className="new-expense__controls">
                     <label>Date</label>
-                    <input type="date" onChange={dateChanged} />
+                    <input type="date" value={enteredDate} onChange={dateChanged} />
                 </div>
 
             </div>
